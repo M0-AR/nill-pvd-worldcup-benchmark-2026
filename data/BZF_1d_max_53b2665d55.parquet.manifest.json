@@ -1,0 +1,11 @@
+{
+  "symbol": "BZ=F",
+  "interval": "1d",
+  "period": "max",
+  "rows": 4774,
+  "start": "2007-07-30 04:00:00",
+  "end": "2026-10-02 04:00:00",
+  "downloaded_utc": "2026-10-02T13:20:05.226422+00:00",
+  "cache_file": "BZF_1d_max_53b2665d55.parquet",
+  "nan_close_pct": 0.0
+}

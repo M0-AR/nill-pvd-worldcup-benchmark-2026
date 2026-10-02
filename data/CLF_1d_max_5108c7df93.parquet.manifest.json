@@ -1,0 +1,11 @@
+{
+  "symbol": "CL=F",
+  "interval": "1d",
+  "period": "max",
+  "rows": 6556,
+  "start": "2000-08-23 04:00:00",
+  "end": "2026-10-02 04:00:00",
+  "downloaded_utc": "2026-10-02T13:15:20.427633+00:00",
+  "cache_file": "CLF_1d_max_5108c7df93.parquet",
+  "nan_close_pct": 0.0
+}

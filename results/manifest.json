@@ -1,0 +1,30 @@
+{
+  "config": {
+    "universe": [
+      "DAX",
+      "WTI",
+      "ES",
+      "NQ"
+    ],
+    "daily_period": "max",
+    "intraday_interval": "15m",
+    "intraday_period": "60d",
+    "min_rr": 3.0,
+    "risk_pct_private": 0.01,
+    "risk_pct_championship": 0.025,
+    "fee_bps": 5.0,
+    "walk_forward_splits": 4,
+    "permutation_n": 2000,
+    "max_hold": 60,
+    "seed": 7
+  },
+  "symbols": {
+    "DAX": "^GDAXI",
+    "WTI": "CL=F",
+    "BRENT": "BZ=F",
+    "ES": "ES=F",
+    "NQ": "NQ=F",
+    "GOLD": "GC=F"
+  },
+  "note": "All data public Yahoo Finance; see data/*.manifest.json for provenance."
+}

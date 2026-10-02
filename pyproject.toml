@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nill-pvd-worldcup-benchmark-2026"
+version = "1.0.0"
+description = "Independent verification and benchmark of the Patrick Nill PVD fair-value range methodology (Robbins World Cup) on public market data."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.26",
+  "pandas>=2.2",
+  "scipy>=1.12",
+  "pyyaml>=6.0",
+  "yfinance>=0.2.40",
+  "matplotlib>=3.8",
+  "scikit-learn>=1.4",
+  "statsmodels>=0.14",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.4"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100

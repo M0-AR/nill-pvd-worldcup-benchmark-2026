@@ -1,0 +1,11 @@
+{
+  "symbol": "^GDAXI",
+  "interval": "15m",
+  "period": "60d",
+  "rows": 2031,
+  "start": "2026-07-13 07:00:00",
+  "end": "2026-10-02 13:00:00",
+  "downloaded_utc": "2026-10-02T13:15:18.119929+00:00",
+  "cache_file": "GDAXI_15m_60d_7d587560dc.parquet",
+  "nan_close_pct": 0.0
+}

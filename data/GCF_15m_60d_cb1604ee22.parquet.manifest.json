@@ -1,0 +1,11 @@
+{
+  "symbol": "GC=F",
+  "interval": "15m",
+  "period": "60d",
+  "rows": 4524,
+  "start": "2026-07-24 04:00:00",
+  "end": "2026-10-02 13:00:00",
+  "downloaded_utc": "2026-10-02T13:20:12.311237+00:00",
+  "cache_file": "GCF_15m_60d_cb1604ee22.parquet",
+  "nan_close_pct": 0.0
+}

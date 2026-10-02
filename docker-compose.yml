@@ -1,0 +1,25 @@
+services:
+  study:
+    build: .
+    container_name: nill-pvd-study
+    volumes:
+      - ./data:/work/data
+      - ./results:/work/results
+    environment:
+      - PYTHONPATH=/work/src
+      - TZ=UTC
+    command: ["python", "run_full_study.py", "--config", "configs/experiment.yaml"]
+
+  lab:
+    build: .
+    container_name: nill-pvd-lab
+    volumes:
+      - ./data:/work/data
+      - ./results:/work/results
+      - ./notebooks:/work/notebooks
+    ports:
+      - "8888:8888"
+    environment:
+      - PYTHONPATH=/work/src
+    command: ["python", "-m", "http.server", "8000", "--directory", "results"]
+    profiles: ["lab"]

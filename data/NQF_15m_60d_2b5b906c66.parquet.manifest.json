@@ -1,0 +1,11 @@
+{
+  "symbol": "NQ=F",
+  "interval": "15m",
+  "period": "60d",
+  "rows": 4522,
+  "start": "2026-07-24 04:00:00",
+  "end": "2026-10-02 13:00:00",
+  "downloaded_utc": "2026-10-02T13:15:25.924890+00:00",
+  "cache_file": "NQF_15m_60d_2b5b906c66.parquet",
+  "nan_close_pct": 0.0
+}

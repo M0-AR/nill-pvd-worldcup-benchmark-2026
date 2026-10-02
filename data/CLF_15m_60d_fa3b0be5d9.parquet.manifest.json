@@ -1,0 +1,11 @@
+{
+  "symbol": "CL=F",
+  "interval": "15m",
+  "period": "60d",
+  "rows": 4522,
+  "start": "2026-07-24 04:00:00",
+  "end": "2026-10-02 13:00:00",
+  "downloaded_utc": "2026-10-02T13:15:22.193438+00:00",
+  "cache_file": "CLF_15m_60d_fa3b0be5d9.parquet",
+  "nan_close_pct": 0.0
+}

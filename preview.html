@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nill PVD World Cup Benchmark — Interactive Preview</title>
+<meta name="description" content="Independent reproducible benchmark of the Patrick Nill PVD fair-value range methodology on DAX, WTI, ES, NQ public data. Daily 1987-2026 + 15m. Docker reproducible.">
+<style>
+:root{--bg:#0b1220;--panel:#111a2e;--panel2:#0f1830;--line:#223252;--txt:#e8eefc;--mut:#9fb0d0;--acc:#f5b942;--grn:#2fd08c;--red:#ff6b6b;--blu:#5aa2ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(1200px 600px at 80% -10%,#1b2b55 0%,var(--bg) 55%) fixed,var(--bg);color:var(--txt);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif}
+a{color:var(--blu)}.wrap{max-width:1120px;margin:0 auto;padding:28px 20px 80px}
+.hero{border:1px solid var(--line);border-radius:20px;padding:34px 30px;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,0) 40%),var(--panel);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.badge{border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:13px;background:#0d1528;color:var(--mut)}.badge b{color:var(--txt)}
+h1{font-size:clamp(28px,4vw,46px);line-height:1.08;margin:8px 0 8px}.sub{color:var(--mut);font-size:18px;max-width:70ch}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:22px 0}.kpi{border:1px solid var(--line);border-radius:14px;padding:14px;background:var(--panel2)}.kpi .v{font-size:22px;font-weight:800}.kpi .l{font-size:12px;color:var(--mut);text-transform:uppercase;letter-spacing:.08em}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.btn{border:1px solid var(--line);border-radius:12px;padding:10px 16px;text-decoration:none;font-weight:700}.btn.primary{background:var(--acc);color:#1a1200;border-color:transparent}.btn.ghost{color:var(--txt);background:#0d1528}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:860px){.grid2{grid-template-columns:1fr}}
+.card{border:1px solid var(--line);border-radius:16px;padding:20px;background:var(--panel)}h2{font-size:26px;margin:36px 0 10px}h3{margin:18px 0 8px}p.mut{color:var(--mut)}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{border-bottom:1px solid var(--line);padding:8px 8px;text-align:right}th:first-child,td:first-child{text-align:left}th{color:var(--mut);font-weight:700}
+code,pre{background:#0a1122;border:1px solid var(--line);border-radius:10px}pre{padding:14px;overflow:auto;font-size:13.5px}code{padding:2px 6px}
+img,video{max-width:100%;border-radius:12px;border:1px solid var(--line);background:#000}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:860px){.gallery{grid-template-columns:1fr}}
+.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}.feat{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--panel2)}.feat b{display:block;margin-bottom:6px}
+.story{border-left:4px solid var(--acc);padding:10px 14px;background:#0d1528;border-radius:0 12px 12px 0;margin:10px 0}
+.warn{border:1px solid #6b3a3a;background:#221014;border-radius:12px;padding:12px 14px}.ok{border:1px solid #1f5c40;background:#0e2018;border-radius:12px;padding:12px 14px}
+.toc{columns:2;font-size:14px;color:var(--mut)}footer{color:var(--mut);font-size:13px;margin-top:40px;border-top:1px solid var(--line);padding-top:16px}
+.copy{cursor:pointer}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+<div class="badges">
+<span class="badge"><b>MIT</b> · open source</span>
+<span class="badge">Python 3.10+ · Docker Compose</span>
+<span class="badge">Yahoo Finance public data</span>
+<span class="badge">DAX 9,802d · WTI/ES/NQ ~6,5k d</span>
+<span class="badge">daily 1987–2026 + 15m 60d</span>
+<span class="badge">3 tests passing</span>
+<span class="badge">Not financial advice</span>
+</div>
+<h1>Verifying a World Champion</h1>
+<p class="sub"><b>Independent, reproducible benchmark of the Patrick Nill PVD fair-value range methodology</b> — the 2× Robbins World Cup champion system (Push → Base → Decision, 3-touch confirmation, R≥3, 1% risk) — tested on <b>live public DAX, oil, ES &amp; Nasdaq data</b> with walk-forward, friction ladder, permutation tests and 5 benchmarks. Result: an <b>honest negative result</b> plus 5 hidden-pattern leads for your PhD or trading journal.</p>
+<div class="kpis">
+<div class="kpi"><div class="v">102 / 65 / 92 / 85</div><div class="l">daily trades DAX/WTI/ES/NQ</div></div>
+<div class="kpi"><div class="v">26% / 31% / 23% / 22%</div><div class="l">win-rate daily</div></div>
+<div class="kpi"><div class="v">0.98 / 1.27 / 0.71 / 0.73</div><div class="l">profit factor daily</div></div>
+<div class="kpi"><div class="v">-0.03 / +0.16 / -0.30 / -0.24</div><div class="l">Sharpe daily</div></div>
+<div class="kpi"><div class="v">0.51 / 0.22 / 0.91 / 0.90</div><div class="l">permutation p (H0=0)</div></div>
+<div class="kpi"><div class="v">R≥3 · 1% · 5bps</div><div class="l">risk protocol</div></div>
+</div>
+<div class="btns">
+<a class="btn primary" href="#demo">▶ Watch the 60-sec demo</a>
+<a class="btn ghost" href="#quickstart">🚀 Quickstart in 3 commands</a>
+<a class="btn ghost" href="README.md">📄 Read the paper (README)</a>
+<a class="btn ghost" href="results/daily_summary.csv">📊 Raw CSV results</a>
+</div>
+<p class="mut" style="margin-top:12px">CEO summary: if you want the champion’s risk discipline without the myth, clone this, run <code>docker compose run --rm study</code>, open this page, and in 5 minutes you will know exactly what survives costs and what does not — with charts, trades and code to prove it.</p>
+</div>
+
+<p class="toc"><b>Contents:</b> Demo · What you get · User stories · How it works · Results · Hidden patterns · Reproduce · Architecture · FAQ · License</p>
+
+<h2 id="demo">🎬 Demo — watch the strategy live (no install)</h2>
+<div class="grid2">
+<div class="card">
+<h3>Animated equity build-up (DAX daily)</h3>
+<video controls autoplay muted loop playsinline src="assets/demo.mp4" poster="assets/equity_overview.png" style="width:100%"></video>
+<p class="mut">MP4 generated from verified <code>results/equity_DAX_1d.csv</code> by <code>make_demo_assets.py</code>. If video does not play, see GIF below.</p>
+<img src="assets/demo.gif" alt="Animated DAX equity demo GIF">
+</div>
+<div class="card">
+<h3>What the model trades (one real DAX trade)</h3>
+<img src="assets/trade_example.png" alt="Trade example DAX entry exit stop target">
+<p class="mut">Green ▲ entry (S1/S2), red ▼ exit, dashed red stop, dotted green target. Every trade in <code>results/trades_*.csv</code> has entry/stop/TP/R/MFE/MAE.</p>
+<h3>Terminal demo (copy-paste)</h3>
+<pre id="term">docker compose run --rm study
+# → downloads Yahoo data (cached with manifests)
+# → detects impulses/bases/signals
+# → backtests S1/S2/S3 at 1% risk
+# → writes results/*.csv + figures/*.png
+PYTHONPATH=src python probe_hidden.py
+PYTHONPATH=src pytest tests/ -q  # 3 passed</pre>
+<button class="btn ghost copy" onclick="navigator.clipboard.writeText(document.getElementById('term').innerText)">Copy commands</button>
+</div>
+</div>
+
+<div class="card" style="margin-top:16px">
+<h3>Equity overview (all markets, daily)</h3>
+<img src="assets/equity_overview.png" alt="4-panel daily equity DAX WTI ES NQ">
+<p class="mut">Flat-to-down except WTI nominal +12.7% (still p=0.22, walk-forward unstable). The honest negative result is the point: OHLC-only cannot clone profile/footprint/discretion.</p>
+</div>
+
+<h2>✨ What you get (features)</h2>
+<div class="feats">
+<div class="feat"><b>📦 Fully specified PVD engine</b>Impulse → Base (≥12 bars, ≤1.2 ATR, 3 touches) → Decision. S1 fade, S2 breakout-pullback, S3 sweep-reclaim. Causal, next-open, stop-first, 30%-partial→breakeven. <code>src/nill_pvd/</code></div>
+<div class="feat"><b>🔬 Publication-grade validation</b>Expanding 4-fold walk-forward, 0/5/10/20bps friction ladder, 2,000-shuffle permutation, year/regime splits, Sharpe/Sortino/Calmar/MaxDD/PF/T. No look-ahead.</div>
+<div class="feat"><b>📊 5 benchmarks, same costs</b>buy-hold, SMA 20/100, Bollinger fade, ORB-20, random. Proves harness works and bounds claims.</div>
+<div class="feat"><b>🕵️ Hidden-pattern probes</b>Long-vs-short, small-vs-large, by-setup, regime (pre/covid/post). Long asymmetry + regime fragility + rarity hierarchy, all with N and caveats.</div>
+<div class="feat"><b>🐳 One-command reproduce</b><code>docker compose run --rm study</code> or 3 Python commands. Manifests pin every Yahoo query. Figures auto-saved.</div>
+<div class="feat"><b>🎓 Learn-to-PhD path</b>README teaches, <code>docs/PAPER.md</code> drafts the manuscript, roadmap lists 6 thesis chapters (VAH/VAL learning, footprint RCT, session gating…).</div>
+</div>
+
+<h2>👥 Who is this for (user stories)</h2>
+<div class="story"><b>1. Curious learner → master in one evening.</b> Open this page, watch 60-sec video, read CEO summary + 4 KPI cards, run 3 commands, inspect one trade chart. You will understand ranges, R-multiples and why costs eat naive breakouts.</div>
+<div class="story"><b>2. Discretionary DAX/oil trader → steal the discipline, not the myth.</b> Copy 1% risk law, R≥3 gate, never-move-stops, stop-after-3-losses, no-evening-holds. Use <code>configs/experiment.yaml</code> to test your own R/stop/session tweaks.</div>
+<div class="story"><b>3. Quant researcher → falsify before you fund.</b> Fork <code>ranges.py/strategy.py</code>, add VAH/VAL or footprint, rerun walk-forward + permutation. If T≥2, ≥30/fold, year-stable and friction-proof, you have something.</div>
+<div class="story"><b>4. Educator / mentor → classroom-ready negative result.</b> Show equity_overview + walk-forward collapse + friction ladder. Teach bias taxonomy, p-hacking vs validation, and why champions survive via risk, not win-rate.</div>
+<div class="story"><b>5. PhD student → 6 chapters, data included.</b> Zone-geometry learning, tape-speed confirmation, session/news gating, per-market fake calibration, Deflated Sharpe/White check, 10-yr 1m book simulation. Start from <code>probe_hidden_full.json</code>.</div>
+
+<h2>⚙️ How it works (5 steps, 5 minutes)</h2>
+<div class="grid2">
+<div class="card"><h3>1. Download public data</h3><pre>PYTHONPATH=src python download_data.py
+# DAX ^GDAXI 9802d, WTI/ES/NQ ~6570d
+# + 15m 60d; → data/*.parquet + manifest</pre></div>
+<div class="card"><h3>2. Detect fair-value bases</h3><pre>from nill_pvd.ranges import *
+imp = detect_impulse(df)      # &gt;2.5 ATR
+bases = detect_bases(df, imp) # ≥12 bars, 3 touches</pre></div>
+</div>
+<div class="grid2" style="margin-top:12px">
+<div class="card"><h3>3. Build S1/S2/S3 signals</h3><pre>from nill_pvd.strategy import build_signals
+sig = build_signals(df, bases, min_rr=3.0)
+# S1 fade · S2 breakout · S3 sweep</pre></div>
+<div class="card"><h3>4. Backtest + validate</h3><pre>from nill_pvd.backtest import backtest
+eq, tr = backtest(df, bases, sig,
+  risk_pct=0.01, fee_bps=5.0)
+# → equity, R, MFE/MAE, walk-forward…</pre></div>
+</div>
+
+<h2 id="quickstart">🚀 Quickstart</h2>
+<pre>git clone &lt;your-fork&gt; nill-pvd-worldcup-benchmark-2026 && cd nill-pvd-worldcup-benchmark-2026
+docker compose run --rm study
+# results/: daily_summary.csv intraday_summary.csv walk_forward.csv friction.csv benchmarks.csv figures/*.png
+# assets/: demo.mp4 demo.gif equity_overview.png trade_example.png
+# open preview.html in your browser for this beautiful report</pre>
+<p class="mut">No Docker? <code>pip install -r requirements.txt && PYTHONPATH=src python download_data.py && PYTHONPATH=src python run_full_study.py --config configs/experiment.yaml</code></p>
+
+<h2>📈 Results (verified 2026-10-02 — read the tables, not the hype)</h2>
+<div class="card">
+<h3>Daily (R≥3, 1% risk, 5bps) — $100k start</h3>
+<table><tr><th>Market</th><th>n</th><th>WR</th><th>PF</th><th>avgR</th><th>PnL$</th><th>Sharpe</th><th>MaxDD</th><th>perm-p</th><th>Final</th></tr>
+<tr><td>DAX</td><td>102</td><td>26.5%</td><td>0.98</td><td>+0.05</td><td>-1,476</td><td>-0.03</td><td>-20.5%</td><td>0.51</td><td>94,351</td></tr>
+<tr><td>WTI</td><td>65</td><td>30.8%</td><td>1.27</td><td>+0.24</td><td>+13,964</td><td>+0.16</td><td>-10.8%</td><td>0.22</td><td>112,749</td></tr>
+<tr><td>ES</td><td>92</td><td>22.8%</td><td>0.71</td><td>-0.17</td><td>-18,750</td><td>-0.30</td><td>-31.9%</td><td>0.91</td><td>77,802</td></tr>
+<tr><td>NQ</td><td>85</td><td>22.4%</td><td>0.73</td><td>-0.16</td><td>-16,057</td><td>-0.24</td><td>-23.8%</td><td>0.90</td><td>81,554</td></tr></table>
+<p class="mut">T: DAX -0.08, WTI +0.80, ES -1.42, NQ -1.26 (need ≥2.0). Files: <code>results/daily_summary.csv</code></p>
+<h3>Intraday 15m (60-day snapshot)</h3>
+<table><tr><th>Market</th><th>n</th><th>WR</th><th>PF</th><th>PnL$</th><th>Sharpe</th></tr>
+<tr><td>DAX 15m</td><td>32</td><td>15.6%</td><td>0.45</td><td>-16,618</td><td>-0.89</td></tr>
+<tr><td>WTI 15m</td><td>87</td><td>27.6%</td><td>0.80</td><td>-12,926</td><td>-0.34</td></tr>
+<tr><td>ES 15m</td><td>80</td><td>35.0%</td><td>0.56</td><td>-25,107</td><td>-1.09</td></tr>
+<tr><td>NQ 15m</td><td>85</td><td>34.1%</td><td>0.76</td><td>-14,126</td><td>-0.62</td></tr></table>
+<h3>Walk-forward (expanding, out-of-sample)</h3>
+<table><tr><th>Market</th><th>F0 PF</th><th>F1 PF</th><th>F2 PF</th><th>F3 PF</th><th>Verdict</th></tr>
+<tr><td>DAX</td><td>2.23</td><td>1.24</td><td>2.06</td><td>0.62 (n=15)</td><td>collapse → unstable</td></tr>
+<tr><td>WTI</td><td>1.56</td><td>1.28</td><td>2.66</td><td>0.00 (0/7)</td><td>unstable</td></tr>
+<tr><td>ES/NQ</td><td colspan="4">never jointly stable</td><td>fail</td></tr></table>
+<p class="mut">Full: <code>results/walk_forward.csv</code>. Friction: DAX 0bps +$3,248 → 5bps -$1,476 → 20bps -$13,144 (<code>friction.csv</code>).</p>
+</div>
+
+<div class="card" style="margin-top:12px">
+<h3>Gallery — click to zoom (all auto-generated, inspectable)</h3>
+<div class="gallery">
+<div><b>DAX daily</b><br><img src="results/figures/equity_DAX_1d.png"></div>
+<div><b>WTI daily</b><br><img src="results/figures/equity_WTI_1d.png"></div>
+<div><b>ES daily</b><br><img src="results/figures/equity_ES_1d.png"></div>
+<div><b>NQ daily</b><br><img src="results/figures/equity_NQ_1d.png"></div>
+<div><b>DAX 15m</b><br><img src="results/figures/equity_DAX_intraday.png"></div>
+<div><b>WTI 15m</b><br><img src="results/figures/equity_WTI_intraday.png"></div>
+<div><b>ES 15m</b><br><img src="results/figures/equity_ES_intraday.png"></div>
+<div><b>NQ 15m</b><br><img src="results/figures/equity_NQ_intraday.png"></div>
+</div>
+</div>
+
+<h2>🕵️ Hidden patterns (exploratory — small N, verify before citing)</h2>
+<div class="grid2">
+<div class="card"><h3>1. Long asymmetry ★ strongest</h3><p>DAX longs +0.79R (+$19,766, n=30) vs shorts -0.26R (-$21,243, n=72). WTI longs +0.53R (+$14,297) vs shorts +0.01R. Power begets power — shorts subsidise longs even in a losing system.</p></div>
+<div class="card"><h3>2. Regime fragility</h3><p>DAX-covid +0.95R vs post-2021 -0.25R. WTI pre-2020 +$16,838 vs covid -$2,021 vs post -$853. Gating (like pausing oil 4 months) is rational.</p></div>
+</div>
+<div class="grid2" style="margin-top:12px">
+<div class="card"><h3>3. Rarity hierarchy</h3><p>S1 81–100% of signals, S2 0–6, S3 0–1. Matches “few trades/week, S3 best but rarest”. S3 needs years of 15m + profile data.</p></div>
+<div class="card"><h3>4–5. Size puzzle + time shadow</h3><p>OHLC calibration yields all-large bases → “small zones best” untestable without secret geometry. 15m bleed fits trading through 14:00 US-open shift. Both scope PhD follow-ups.</p></div>
+</div>
+
+<h2>🏗️ Architecture</h2>
+<pre>yahoo (public) → data/*.parquet + manifest
+  → add_features (ATR, trailing only)
+  → detect_impulse / detect_bases (3-touch, small/med/large)
+  → build_signals S1/S2/S3 (R≥3, causal ffill)
+  → backtest (next-open, 1% risk, 30% partial→BE)
+  → metrics / walk-forward / friction / benchmarks
+  → results/*.csv + figures/*.png + assets/demo.* → preview.html (this page)</pre>
+<p class="mut">Code: <code>src/nill_pvd/data.py ranges.py strategy.py backtest.py metrics.py validation.py benchmarks.py</code> · Config: <code>configs/experiment.yaml</code> · Tests: <code>tests/test_pvd.py</code> (3 passing)</p>
+
+<h2>❓ FAQ</h2>
+<div class="card"><b>Can I get rich copying S1/S2/S3 as coded here?</b><br><span class="mut">No — and that is the contribution. Naive OHLC transcription fails costs and walk-forward. Copy the risk protocol and validation method, not the entries.</span></div>
+<div class="card"><b>What actually transfers from the champion?</b><br><span class="mut">1% risk, R≥3, 30%-partial→breakeven, never move stops, stop after 3–4 losses, no evening holds, skip news, 2–3 month paper validation, personality fit.</span></div>
+<div class="card"><b>What do I need for a real edge?</b><br><span class="mut">Weekly VAH/VAL zone geometry, footprint/tape confirmation, session/news gating, per-market fake calibration (DAX ~10pts vs ES 1–2pts), trailing under new fair value. See roadmap in README §10.</span></div>
+<div class="card"><b>How do I cite / share?</b><br><span class="mut">MIT code + CC-BY-4.0 text/figures. BibTeX in README §12. Link <code>preview.html</code> for the visual story, <code>README.md</code> for the paper.</span></div>
+
+<div class="warn"><b>⚠️ Not financial advice.</b> Independent academic verification study. Championship 2–3% risk shown for completeness — do not mimic without understanding ruin risk. Respect Yahoo ToS (cache for personal research).</div>
+
+<footer>MIT © 2026 · Built reproducibly: <code>docker compose run --rm study</code> · Data: Yahoo Finance public (see <code>data/*.manifest.json</code>) · Results: <code>results/</code> · Paper: <code>README.md</code> + <code>docs/PAPER.md</code> · Demo: <code>assets/demo.mp4</code> / <code>demo.gif</code> · Open <code>preview.html</code> locally — no server needed.</footer>
+
+</div>
+</body>
+</html>
